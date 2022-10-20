@@ -1,10 +1,15 @@
 package com.yash.rbs.model;
 
+import java.util.Date;
+import java.util.List;
+
 public class BookedDetails {
 	
-	private Integer roomCount;
+	private List<RoomNumber> list;
 	private String checkIn;
 	private String checkOut;
+	private Date bookDate;
+	private Integer dateRange;
 	private Integer typeId;
 	
 	public Integer getTypeId() {
@@ -13,11 +18,17 @@ public class BookedDetails {
 	public void setTypeId(Integer typeId) {
 		this.typeId = typeId;
 	}
-	public Integer getRoomCount() {
-		return roomCount;
+	public Integer getDateRange() {
+		return dateRange;
 	}
-	public void setRoomCount(Integer roomCount) {
-		this.roomCount = roomCount;
+	public void setDateRange(Integer dateRange) {
+		this.dateRange = dateRange;
+	}
+	public Date getBookDate() {
+		return bookDate;
+	}
+	public void setBookDate(Date bookDate) {
+		this.bookDate = bookDate;
 	}
 	public String getCheckIn() {
 		return checkIn;
@@ -31,6 +42,13 @@ public class BookedDetails {
 	public void setCheckOut(String checkOut) {
 		this.checkOut = checkOut;
 	}
+	public List<RoomNumber> getList() {
+		return list;
+	}
+	public void setList(List<RoomNumber> list) {
+		this.list = list;
+	}
+	
 	
 	
 

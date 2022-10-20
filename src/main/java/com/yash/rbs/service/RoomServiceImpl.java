@@ -27,9 +27,10 @@ public class RoomServiceImpl implements RoomService {
 		return roomRepo.findAll();
 	}
 
-	public List<Room> findRoomNumber(Integer roomNumber) {
-		return roomRepo.findByRoomNumber(roomNumber);
-	}
+	/*
+	 * public List<Room> findRoomNumber(Integer roomNumber) { return
+	 * roomRepo.findByRoomNumber(roomNumber); }
+	 */
 	
 	public Boolean saveRoom(RoomDto roomdto) {
 		Room room=new Room();

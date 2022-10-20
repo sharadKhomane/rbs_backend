@@ -1,6 +1,7 @@
 package com.yash.rbs.repository;
 
 import java.util.Date;
+import java.util.Optional;
 
 import com.yash.rbs.model.RoomAvaiable;
 
@@ -10,5 +11,7 @@ public interface RoomAvaiableRepo extends JpaRepository<RoomAvaiable, Integer> {
 
 	RoomAvaiable findByAvaiableDate(Date date);
 
-	RoomAvaiable findTopByOrderByIdDesc();
+	//RoomAvaiable findTopByOrderByIdDesc();
+	
+	Optional<RoomAvaiable> findTopByOrderByIdDesc();
 }

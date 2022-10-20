@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import com.yash.rbs.model.Book;
 import com.yash.rbs.model.BookedDetails;
 import com.yash.rbs.model.RoomBookedDetails;
+import com.yash.rbs.model.SearchBookResult;
 import com.yash.rbs.service.ReservedServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +40,26 @@ public class RoomBookController {
 		  list.add(roomBookedDetails);
 		  return  ResponseEntity.status(HttpStatus.OK).body(list);
 	}
+	
+
+	@PostMapping("/bookDetails")
+	public ResponseEntity bookRoom(@RequestBody BookedDetails bookedDetails)
+	{
+		
+		List<Book> book= reservedService.bookRoom(bookedDetails);
+			/*
+			 * List<RoomBookedDetails> list=new ArrayList<>(); list.add(roomBookedDetails);
+			 */
+		  return  ResponseEntity.status(HttpStatus.OK).body(book);
+	}
+	
+	@PostMapping("/searchRoom")
+	public ResponseEntity searchRoomByDate(@RequestBody BookedDetails bookedDetails)
+	{
+		
+		 List<SearchBookResult> book= reservedService.searchRoomByDate(bookedDetails);
+		return  ResponseEntity.status(HttpStatus.OK).body(book);
+	}
+	
+	
 }

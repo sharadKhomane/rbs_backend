@@ -71,11 +71,12 @@ public class RoomController {
 
 	@RequestMapping(value = "/allRoom/{roomNumber}", method = RequestMethod.GET)
 	public ResponseEntity<List<Room>> findByNumber(@PathVariable("roomNumber") Integer roomNumber) {
-		List<Room> rooms = roomService.findRoomNumber(roomNumber);
-		if (rooms.isEmpty()) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<>(rooms, HttpStatus.OK);
+		/*
+		 * List<Room> rooms = roomService.findRoomNumber(roomNumber); if
+		 * (rooms.isEmpty()) { return new ResponseEntity<>(HttpStatus.NO_CONTENT); }
+		 * return new ResponseEntity<>(rooms, HttpStatus.OK);
+		 */
+		return null;
 	}
 	
 	

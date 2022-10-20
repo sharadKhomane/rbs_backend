@@ -8,7 +8,7 @@ import com.yash.rbs.model.RoomDto;
 public interface RoomService {
 	
 	List<Room> findAllRoom();
-	List<Room> findRoomNumber(Integer roomNumber);
+	//List<Room> findRoomNumber(Integer roomNumber);
 	Boolean saveRoom(RoomDto roomdto);
 	Boolean delete(Integer roomId);
 

@@ -7,10 +7,16 @@ import com.yash.rbs.model.RoomTypeJoinDTO;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface RoomRepo extends JpaRepository<Room, Integer> {
 
-	List<Room> findByRoomNumber(Integer roomNumber);
+	/* List<Room> findByRoomNumber(Integer roomNumber); */
+
+	Room findByRoomNumber(Integer roomNumber);
+
+	@Query(value = "from Room t where t.roomType.roomTypeid = :typeId")
+	List<Room> findAllRoomByType(@Param("typeId")Integer typeId);
 	
 	
 	/*
