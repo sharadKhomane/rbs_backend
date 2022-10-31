@@ -2,6 +2,7 @@ package com.yash.rbs.restController;
 
 import java.util.List;
 
+import com.yash.rbs.model.RegisterResponseModel;
 import com.yash.rbs.model.RoomType;
 import com.yash.rbs.model.RoomTypeDTO;
 import com.yash.rbs.service.RoomTypeServiceImpl;
@@ -27,7 +28,7 @@ public class RoomTypeController {
 	RoomTypeServiceImpl roomTypeService;
 	
 	@PostMapping("/addRoomType")
-	public Boolean saveRoomType(@RequestBody RoomTypeDTO roomType){
+	public RegisterResponseModel saveRoomType(@RequestBody RoomTypeDTO roomType){
 		return roomTypeService.saveRoomType(roomType);
 		
 	}

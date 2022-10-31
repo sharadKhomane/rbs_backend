@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import com.yash.rbs.model.RegisterResponseModel;
 import com.yash.rbs.model.Room;
 import com.yash.rbs.model.RoomDto;
 import com.yash.rbs.model.RoomType;
@@ -32,23 +33,40 @@ public class RoomServiceImpl implements RoomService {
 	 * roomRepo.findByRoomNumber(roomNumber); }
 	 */
 	
-	public Boolean saveRoom(RoomDto roomdto) {
-		Room room=new Room();
-		RoomType roomType=roomTypeRepo.findByRoomTypeid(roomdto.getrTypes());
-		if(roomType!=null)
+	public RegisterResponseModel saveRoom(RoomDto roomdto) {
+		
+		RegisterResponseModel response=new RegisterResponseModel();
+		Optional<Room> roomNoCheck=roomRepo.findByRoomNumber(roomdto.getRoomNumber());
+		
+		if(roomNoCheck.isEmpty())
 		{
-			
-			room.setRoomNumber(roomdto.getRoomNumber());
-			room.setCreatedDate(DateUtil.getCurrentDateTime());
-			room.setUpdatedDate(DateUtil.getCurrentDateTime());
-			room.setStatus(true);
-			room.setRoomType(roomType);
-			roomRepo.save(room);
-			return true;
+			Room room=new Room();
+			RoomType roomType=roomTypeRepo.findByRoomTypeid(roomdto.getrTypes());
+			if(roomType!=null)
+			{
+				
+				room.setRoomNumber(roomdto.getRoomNumber());
+				room.setCreatedDate(DateUtil.getCurrentDateTime());
+				room.setUpdatedDate(DateUtil.getCurrentDateTime());
+				room.setStatus(true);
+				room.setRoomType(roomType);
+				roomRepo.save(room);
+				response.setResult(true);
+				response.setMessage("Room added");
+				return response;
+			}
+			else
+			{
+				response.setResult(false);
+				response.setMessage("Something went wrong please try again");
+				return response;
+			}
 		}
 		else
 		{
-			throw new NullPointerException();
+			response.setResult(false);
+			response.setMessage("Room number already present please try with another room no");
+			return response;
 		}
 	  
 	}

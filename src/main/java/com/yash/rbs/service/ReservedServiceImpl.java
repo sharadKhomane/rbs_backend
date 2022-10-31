@@ -7,6 +7,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -120,13 +121,13 @@ public class ReservedServiceImpl implements ReservedService {
 			System.out.println("start date is::"+start);
 		
 			
-			  for(RoomNumber ob:obj) { Room
-			  room=roomRepo.findByRoomNumber(ob.getRoomNumber());
+			  for(RoomNumber ob:obj) {
+			  Optional<Room> room=roomRepo.findByRoomNumber(ob.getRoomNumber());
 			  
 			  if(room!=null) { Book book=new Book();
 			  book.setCheckIn(DateUtil.getStringtoDate(bookedDetails.getCheckIn()));
 			  book.setCheckOut(DateUtil.getStringtoDate(bookedDetails.getCheckOut()));
-			  book.setRoom(room);
+			  book.setRoom(room.get());
 			  Date avdate =java.sql.Date.valueOf(start);
 			  book.setBookDate(avdate);
 			  book.setCreatedDate(DateUtil.getCurrentDateTime());

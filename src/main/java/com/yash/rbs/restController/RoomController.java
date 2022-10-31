@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.yash.rbs.model.RegisterResponseModel;
 import com.yash.rbs.model.Room;
 import com.yash.rbs.model.RoomDto;
 import com.yash.rbs.model.RoomTypeJoinDTO;
@@ -37,7 +38,7 @@ public class RoomController {
 	RoomServiceImpl roomService;
 
 	@PostMapping("/addRoom")
-	public Boolean saveRoom(@RequestBody RoomDto room2) {
+	public RegisterResponseModel saveRoom(@RequestBody RoomDto room2) {
 		return roomService.saveRoom(room2);
 	}
 
